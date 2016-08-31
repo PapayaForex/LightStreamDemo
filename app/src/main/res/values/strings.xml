@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">LightStreamDemo</string>
+    <string name="host">http://push.lightstreamer.com</string>
+    <string name="no_data">N/A</string>
+    <string name="stop">Pause Lightstreamer Connection</string>
+    <string name="start">Restart Lightstreamer Connection</string>
+    <string name="about">About this demo</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_streaming">Streaming over HTTP</string>
+    <string name="status_polling">Polling over HTTP</string>
+    <string name="status_ws_streaming">Streaming over WS</string>
+    <string name="status_ws_polling">Polling over WS</string>
+    <string name="status_stalled">Stalled</string>
+    <string name="status_connecting">Connecting</string>
+    <string name="status_waiting">Disconnected, waiting to connect again</string>
+    <string name="details">Details</string>
+    <string name="open_detail_page">see details</string>
+    <string name="last_price">Last Price</string>
+    <string name="time">Time</string>
+    <string name="pct_change">Change</string>
+    <string name="bid">Bid</string>
+    <string name="bid_quantity">Bid Size</string>
+    <string name="ask">Ask</string>
+    <string name="ask_quantity">Ask Size</string>
+    <string name="open_price">Open</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="lightstreamer">Lightstreamer</string>
+    <string name="about_intro">This is a demo showing the usage of the Lightstreamer Android client library in order
+        to receive real-time updates.</string>
+    <string name="about_start_stop">Use the start/pause button on the menu to open/close the connection to the
+        Lightstreamer server.</string>
+    <string name="about_open_details">Touch one of the stocks in the list to see its details.</string>
+    <string name="about_sources">Navigate the sources of the demo application on github
+        github.com/Lightstreamer/Lightstreamer-example-AdvStockList-client-android and check out our website
+        www.lightstreamer.com</string>
+    <string name="about_plot">Live charts are plotted using androidplot androidplot.com</string>
+    <string name="about_mpn">An extended version of this demo, supporting mobile push notifications, is also avalable,
+	see play.google.com/store/apps/details?id=com.lightstreamer.simple_demo.android</string>
+</resources>

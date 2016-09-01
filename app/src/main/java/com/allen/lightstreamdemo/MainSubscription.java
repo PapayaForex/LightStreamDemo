@@ -19,6 +19,7 @@ public class MainSubscription extends SimpleSubscriptionListener {
     public MainSubscription(ArrayList<StockForList> list) {
         super(TAG);
         this.mLists = list;
+
     }
 
     public void changeContext(Handler handler, ListView listView) {

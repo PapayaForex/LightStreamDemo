@@ -1,4 +1,4 @@
-package com.allen.lightstreamdemo;
+package com.allen.lightstreamdemo.activity;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -21,6 +21,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.allen.lightstreamdemo.fragment.DetailsFragment;
+import com.allen.lightstreamdemo.LightStreamApplication;
+import com.allen.lightstreamdemo.ILightStreamerClientProxy;
+import com.allen.lightstreamdemo.R;
+import com.allen.lightstreamdemo.fragment.StocksFragment;
 import com.lightstreamer.client.ClientListener;
 import com.lightstreamer.client.LightstreamerClient;
 import com.orhanobut.logger.Logger;
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements StocksFragment.on
     private boolean pnEnable = false;
     private boolean isConnectionExpected = false;
     private GestureDetectorCompat mDetectorCompat;
-    LightStreamerClientProxy mClientProxy;
+    ILightStreamerClientProxy mClientProxy;
     private Handler mHandler;
 
     @Override
@@ -83,12 +88,13 @@ public class MainActivity extends AppCompatActivity implements StocksFragment.on
 
         @Override
         public void onListenEnd(LightstreamerClient lightstreamerClient) {
-
+            Logger.d(lightstreamerClient);
         }
 
         @Override
         public void onListenStart(LightstreamerClient lightstreamerClient) {
             this.onStatusChange(lightstreamerClient.getStatus());
+            Logger.d("onListenStart: ");
         }
 
         @Override
@@ -98,11 +104,13 @@ public class MainActivity extends AppCompatActivity implements StocksFragment.on
 
         @Override
         public void onStatusChange(String status) {
+            Logger.d("onStatusChange: "+status);
             mHandler.post(new StatusChange(status));
         }
 
         @Override
         public void onPropertyChange(String s) {
+            Logger.d("onPropertyChange: "+s);
 
         }
     }

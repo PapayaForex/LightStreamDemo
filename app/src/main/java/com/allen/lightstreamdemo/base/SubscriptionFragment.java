@@ -1,7 +1,9 @@
-package com.allen.lightstreamdemo;
+package com.allen.lightstreamdemo.base;
 
 import android.app.Activity;
 
+import com.allen.lightstreamdemo.ILightStreamerClientProxy;
+import com.allen.lightstreamdemo.LightStreamApplication;
 import com.lightstreamer.client.Subscription;
 import com.orhanobut.logger.Logger;
 
@@ -12,12 +14,12 @@ import com.orhanobut.logger.Logger;
 public class SubscriptionFragment {
     private static final String TAG = "SubscriptionFragment";
     private Subscription mSubscription;
-    private LightStreamerClientProxy lsClient;
+    private ILightStreamerClientProxy lsClient;
     private boolean subscribed = false;
     private boolean running = false;
 
 
-    protected synchronized void setSubscription(Subscription subscription) {
+    public synchronized void setSubscription(Subscription subscription) {
         if (this.mSubscription != null && subscribed) {
             Logger.d("Replacing subscription");
             this.lsClient.removeSubscription(this.mSubscription);

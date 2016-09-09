@@ -19,6 +19,3 @@ uploadArchives {
         }
     }
 }
-rootProject.dependencies {
-    runtime project(path)
-}

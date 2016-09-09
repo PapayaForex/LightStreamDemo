@@ -1,4 +1,4 @@
-package com.allen.lightstreamdemo;
+package com.allen.lightstreamdemo.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.allen.lightstreamdemo.Chart;
+import com.allen.lightstreamdemo.R;
+import com.allen.lightstreamdemo.Stock;
+import com.allen.lightstreamdemo.base.SubscriptionFragment;
+import com.allen.lightstreamdemo.base.Constant;
 import com.androidplot.xy.XYPlot;
 import com.lightstreamer.client.Subscription;
 import com.orhanobut.logger.Logger;
@@ -119,7 +124,7 @@ public class DetailsFragment extends Fragment {
             String itemName = "item" + item;
 
             this.currentSubscription = new Subscription(Constant.MERGE, itemName, subscriptionFields);
-            currentSubscription.setDataAdapter(Constant.QUOTE_ADAPTER);
+//            currentSubscription.setDataAdapter(Constant.QUOTE_ADAPTER);
             this.currentSubscription.setRequestedSnapshot(Constant.YES);
             this.currentSubscription.addListener(stockListener);
             this.currentSubscription.addListener(mChart);

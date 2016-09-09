@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.widget.ListView;
 
 import com.lightstreamer.client.ItemUpdate;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class MainSubscription extends SimpleSubscriptionListener {
         super.onItemUpdate(itemUpdate);
         final StockForList toUpdate = mLists.get(itemUpdate.getItemPos() - 1);
         toUpdate.update(itemUpdate, this.mContext);
+        Logger.d("onItemUpdate: "+itemUpdate);
 
 
     }

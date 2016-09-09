@@ -16,22 +16,31 @@ import static android.content.ContentValues.TAG;
  */
 
 public class LightStreamApplication extends Application {
-    public static LightStreamerClientProxy sClientProxy = null;
-
+    public static ILightStreamerClientProxy sClientProxy = null;
+    private static LightStreamApplication instance;
+    public static LightStreamApplication getInstance() {
+        return instance;
+    }
     private ArrayList<StockForList> mLists;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance =this;
         Logger
                 .init("TAG")                 // default PRETTYLOGGER or use just init()
 
         // default 0
                 ;
-        sClientProxy = new ClientProxy();
+//        sClientProxy = new ClientProxy();
     }
 
-    private class ClientProxy implements LightStreamerClientProxy {
+    public  void initLightClient(String host,String client_token,String account_token){
+        sClientProxy = new ClientProxyImpl(host,client_token,account_token);
+    }
+
+
+    private class ClientProxyImpl implements ILightStreamerClientProxy {
         private boolean connectionWish = false;
         private boolean userWantsConnection = true;
         private LightstreamerClient lsClient = new LightstreamerClient(null, "DEMO");
@@ -39,11 +48,13 @@ public class LightStreamApplication extends Application {
         /**
          * init LightStream password and user
          */
-        public ClientProxy() {
-            lsClient.connectionDetails.setServerAddress(getString(R.string.host));
-//            lsClient.connectionDetails.setUser();
-//            lsClient.connectionDetails.setPassword();
+        public ClientProxyImpl(String host,String client_token,String account_token) {
+            lsClient.connectionDetails.setServerAddress(host);
+            lsClient.connectionDetails.setUser(BuildConfig.UserName);
+            lsClient.connectionDetails.setPassword("CST-" + client_token + "|XST-" + account_token);
+            lsClient.connectionDetails.setAdapterSet("DEFAULT");
             lsClient.connect();
+            Logger.d(host,client_token,account_token);
         }
 
         @Override

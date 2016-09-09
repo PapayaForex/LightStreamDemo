@@ -1,4 +1,4 @@
-package com.allen.lightstreamdemo;
+package com.allen.lightstreamdemo.adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.allen.lightstreamdemo.R;
+import com.allen.lightstreamdemo.StockForList;
 
 import java.util.ArrayList;
 
@@ -49,5 +52,29 @@ public class StocksAdapter extends ArrayAdapter<StockForList> {
         TextView stock_name;
         TextView last_price;
         TextView time;
+
+        public TextView getStock_name() {
+            return stock_name;
+        }
+
+        public void setStock_name(TextView stock_name) {
+            this.stock_name = stock_name;
+        }
+
+        public TextView getLast_price() {
+            return last_price;
+        }
+
+        public void setLast_price(TextView last_price) {
+            this.last_price = last_price;
+        }
+
+        public TextView getTime() {
+            return time;
+        }
+
+        public void setTime(TextView time) {
+            this.time = time;
+        }
     }
 }

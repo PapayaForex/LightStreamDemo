@@ -3,6 +3,7 @@ package com.allen.lightstreamdemo;
 import android.os.Handler;
 import android.widget.TextView;
 
+import com.allen.lightstreamdemo.base.Constant;
 import com.lightstreamer.client.ItemUpdate;
 import com.lightstreamer.client.Subscription;
 

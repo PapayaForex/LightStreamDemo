@@ -7,7 +7,7 @@ import com.lightstreamer.client.Subscription;
  * Created by: allen on 16/8/29.
  */
 
-public interface LightStreamerClientProxy {
+public interface ILightStreamerClientProxy {
     boolean start(boolean userCall);
 
     void stop(boolean userCall);

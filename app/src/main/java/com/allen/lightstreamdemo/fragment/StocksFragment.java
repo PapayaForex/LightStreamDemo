@@ -1,4 +1,4 @@
-package com.allen.lightstreamdemo;
+package com.allen.lightstreamdemo.fragment;
 
 import android.app.Activity;
 import android.app.ListFragment;
@@ -9,6 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.allen.lightstreamdemo.LightStreamApplication;
+import com.allen.lightstreamdemo.ILightStreamerClientProxy;
+import com.allen.lightstreamdemo.MainSubscription;
+import com.allen.lightstreamdemo.R;
+import com.allen.lightstreamdemo.StockForList;
+import com.allen.lightstreamdemo.adapter.StocksAdapter;
+import com.allen.lightstreamdemo.base.Constant;
 import com.lightstreamer.client.Subscription;
 import com.orhanobut.logger.Logger;
 
@@ -25,16 +32,19 @@ public class StocksFragment extends ListFragment {
         void onStockSelected(int item);
     }
 
-    final static String[] items = {"item1", "item2", "item3",
-            "item4", "item5", "item6", "item7", "item8", "item9", "item10",
-            "item11", "item12", "item13", "item14", "item15", "item16",
-            "item17", "item18", "item19", "item20" };
+//    final static String[] items = {"item100", "item2", "item3",
+//            "item4", "item5", "item6", "item7", "item8", "item9", "item10",
+//            "item11", "item12", "item13", "item14", "item15", "item16",
+//            "item17", "item18", "item19", "item20","item21", "item22", "item23" };
+    final static String[] items = {"MARKET:CS.D.CFAGOLD.CFA.IP" };
 
 
-    public final static String[] subscriptionFields = {Constant.STOCK_NAME, Constant.LAST_PRICE,Constant.TIMESTAMP};
+//    public final static String[] subscriptionFields = {Constant.STOCK_NAME, Constant.LAST_PRICE,Constant.TIMESTAMP};
+
+    public final static String[] subscriptionFields = {Constant.BID, Constant.OFFER};
 
     private Handler mHandler;
-    LightStreamerClientProxy lsClient;
+    ILightStreamerClientProxy lsClient;
 
     private static ArrayList<StockForList> sList;
 
@@ -83,7 +93,7 @@ public class StocksFragment extends ListFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         lsClient = LightStreamApplication.sClientProxy;
-        mainSubscription.setDataAdapter(Constant.QUOTE_ADAPTER);
+        mainSubscription.setDataAdapter("DEFAULT");
         mainSubscription.setRequestedMaxFrequency(Constant.FRE);
         mainSubscription.setRequestedSnapshot(Constant.YES);
         mainSubscription.addListener(mainSubscriptionListener);

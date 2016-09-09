@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 
+import com.allen.lightstreamdemo.base.Constant;
 import com.androidplot.util.PixelUtils;
 import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.LineAndPointFormatter;

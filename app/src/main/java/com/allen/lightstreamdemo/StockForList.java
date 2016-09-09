@@ -3,11 +3,12 @@ package com.allen.lightstreamdemo;
 import android.view.View;
 import android.widget.ListView;
 
+import com.allen.lightstreamdemo.adapter.StocksAdapter;
+import com.allen.lightstreamdemo.base.Constant;
 import com.lightstreamer.client.ItemUpdate;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by: allen on 16/8/29.
@@ -32,16 +33,16 @@ public class StockForList {
 
     public void update(ItemUpdate newData, final MainSubscription.Context context) {
         boolean isSnapshot = newData.isSnapshot();
-        if (newData.isValueChanged(Constant.STOCK_NAME)) {
-            stockName = newData.getValue(Constant.STOCK_NAME);
+        if (newData.isValueChanged(Constant.BID)) {
+            stockName = newData.getValue(Constant.BID);
             stockNameColor = isSnapshot ? R.color.snapshot_highlight : R.color.higher_highlight;
         }
-        if (newData.isValueChanged(Constant.TIMESTAMP)) {
-            time = mDateFormat.format(new Date(Long.parseLong(newData.getValue(Constant.TIMESTAMP))));
+        if (newData.isValueChanged(Constant.BID)) {
+            time = newData.getValue(Constant.BID);
             timeColor = isSnapshot ? R.color.snapshot_highlight : R.color.higher_highlight;
         }
-        if (newData.isValueChanged(Constant.LAST_PRICE)) {
-            double newPrice = Double.parseDouble(newData.getValue(Constant.LAST_PRICE));
+        if (newData.isValueChanged(Constant.OFFER)) {
+            double newPrice = Double.parseDouble(newData.getValue(Constant.OFFER));
             lastPrice = mFormat.format(newPrice);
             if (isSnapshot) {
                 lastPriceColor = R.color.snapshot_highlight;
@@ -78,16 +79,16 @@ public class StockForList {
     }
 
     public void fill(StocksAdapter.RowHolder holder) {
-        holder.stock_name.setText(stockName);
-        holder.last_price.setText(lastPrice);
-        holder.time.setText(time);
+        holder.getStock_name().setText(stockName);
+        holder.getLast_price().setText(lastPrice);
+        holder.getTime().setText(time);
         this.fillColor(holder);
     }
 
     private void fillColor(StocksAdapter.RowHolder holder) {
-        holder.stock_name.setBackgroundResource(stockNameColor);
-        holder.last_price.setBackgroundResource(lastPriceColor);
-        holder.time.setBackgroundResource(timeColor);
+        holder.getStock_name().setBackgroundResource(stockNameColor);
+        holder.getLast_price().setBackgroundResource(lastPriceColor);
+        holder.getTime().setBackgroundResource(timeColor);
     }
 
     StocksAdapter.RowHolder extractHolder(ListView listView) {

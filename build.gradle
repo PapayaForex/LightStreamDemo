@@ -19,6 +19,7 @@ allprojects {
         maven {
             url "http://www.lightstreamer.com/repo/maven"
         }
+        maven { url "https://jitpack.io" }
     }
 }
 
